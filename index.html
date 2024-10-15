@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ku: Abhinav Calculator</title>
+    <style>
+        .back {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #181e1f;
+        }
+        body{
+            background-color: #181e1f;
+        }
+        #calculator {
+            background: rgba(255, 255, 255, 0.525);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width:320px ;
+            height:470px ;
+        }
+        input[type="text"] {
+            width: 280px;
+            padding: 15px;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: right;
+            border-radius: 10px;
+        }
+        .box-1:hover {
+            background-color: #ff9215;
+        }
+        .box-2:hover {
+            background-color: #bdaabf;
+        }
+        .box-3:hover {
+            background-color: #efa653;
+        }
+        .box-4:hover {
+            background-color: #7ded94;
+        }
+        /* .box-1{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #484646;
+            color: rgb(198, 241, 255);
+        }
+        .box-2{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #7efe64;
+            color: rgb(0, 0, 0);            
+        }
+        .box-3{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #8eeef5;
+            color: rgb(39, 46, 48);            
+        }
+        .box-4{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #f05b5b;
+            color: rgb(51, 57, 57);            
+        } */
+        .box-4 {
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #eb5555;
+            color: rgb(255, 255, 255);            
+        }
+        .box-1{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #484646;
+            color: rgb(255, 255, 255);
+        }
+        .box-2{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #7efe64;
+            color: rgb(255, 255, 255);            
+        }
+        .box-3{
+            width: 70px;
+            padding: 15px;
+            margin: 5% 2% 0% 0%;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 500px;
+            background-color: #8eeef5;
+            color: rgb(89, 80, 80);            
+        }
+        p{
+            margin: 0px 0px 10px 0px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="back">
+        
+        <div id="calculator">
+    <div><p style="text-align: center; font-style: italic; font-size: 40px;">kumar Abhinav</p></div>
+    <input type="text" id="display" disabled>
+    <div>
+        <button class="box-4" onclick="clearDisplay()">AC</button>
+        <button class="box-4" onclick="deleteLast()">DEL</button>
+        <button class="box-4" onclick="appendToDisplay('%')">%</button>
+        <button class="box-4" onclick="appendToDisplay('/')">/</button>
+    </div>
+    <div>
+        <button class="box-1" onclick="appendToDisplay('1')">1</button>
+        <button class="box-1" onclick="appendToDisplay('2')">2</button>
+        <button class="box-1" onclick="appendToDisplay('3')">3</button>
+        <button class="box-4" onclick="appendToDisplay('*')">*</button>
+    </div>
+    <div>
+        <button class="box-1" onclick="appendToDisplay('4')">4</button>
+        <button class="box-1" onclick="appendToDisplay('5')">5</button>
+        <button class="box-1" onclick="appendToDisplay('6')">6</button>
+        <button class="box-4" onclick="appendToDisplay('-')">-</button>
+        
+    </div>
+    <div>
+        <button class="box-1" onclick="appendToDisplay('7')">7</button>
+        <button class="box-1" onclick="appendToDisplay('8')">8</button>
+        <button class="box-1" onclick="appendToDisplay('9')">9</button>
+        <button class="box-4" onclick="appendToDisplay('+')">+</button>
+    </div>
+    <div>
+        <button class="box-2" onclick="appendToDisplay('00')">00</button>
+        <button class="box-1" onclick="appendToDisplay('0')">0</button>
+        <button class="box-2" onclick="appendToDisplay('.')">.</button>
+        <button class="box-3" onclick="calculateResult()">=</button>
+    </div>
+</div>
+    </div>
+
+<script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function deleteLast() {
+            const display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = '';
+        }
+
+        function calculateResult() {
+            const display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+</script>
+
+</body>
+</html>
